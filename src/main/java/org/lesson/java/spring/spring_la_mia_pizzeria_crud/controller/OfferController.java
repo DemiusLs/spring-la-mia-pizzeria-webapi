@@ -1,7 +1,7 @@
 package org.lesson.java.spring.spring_la_mia_pizzeria_crud.controller;
 
 import org.lesson.java.spring.spring_la_mia_pizzeria_crud.model.Offer;
-import org.lesson.java.spring.spring_la_mia_pizzeria_crud.repository.OfferRepository;
+import org.lesson.java.spring.spring_la_mia_pizzeria_crud.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +19,7 @@ import jakarta.validation.Valid;
 public class OfferController {
 
     @Autowired
-    private OfferRepository repository ;
+    private OfferService offerService ;
 
 
     @PostMapping("/create")
@@ -29,14 +29,14 @@ public class OfferController {
             return "/offers/create-or-edit";
         }
 
-        repository.save(formOffer);
+        offerService.create(formOffer);
         return "redirect:/pizzas/" + formOffer.getPizza().getId();
     }
 
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, Model model){
-        model.addAttribute("offer" , repository.findById(id).get());
+        model.addAttribute("offer" , offerService.getById(id));
         model.addAttribute("edit", true);        
         return "/offers/create-or-edit";
     }
@@ -49,7 +49,7 @@ public class OfferController {
             return "offers/create-or-edit";
         }
 
-        repository.save(formOffer);
+        offerService.update(formOffer);
         
         return "redirect:/pizzas/" + formOffer.getPizza().getId();
     }
