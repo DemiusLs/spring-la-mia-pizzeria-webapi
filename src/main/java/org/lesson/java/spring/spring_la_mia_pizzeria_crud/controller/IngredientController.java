@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.lesson.java.spring.spring_la_mia_pizzeria_crud.model.Ingredient;
 import org.lesson.java.spring.spring_la_mia_pizzeria_crud.model.Pizza;
-import org.lesson.java.spring.spring_la_mia_pizzeria_crud.repository.IngredientRepository;
 import org.lesson.java.spring.spring_la_mia_pizzeria_crud.service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

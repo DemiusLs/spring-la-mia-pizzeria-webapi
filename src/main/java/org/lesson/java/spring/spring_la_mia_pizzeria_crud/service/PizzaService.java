@@ -3,7 +3,7 @@ package org.lesson.java.spring.spring_la_mia_pizzeria_crud.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.lesson.java.spring.spring_la_mia_pizzeria_crud.model.Ingredient;
+
 import org.lesson.java.spring.spring_la_mia_pizzeria_crud.model.Offer;
 import org.lesson.java.spring.spring_la_mia_pizzeria_crud.model.Pizza;
 import org.lesson.java.spring.spring_la_mia_pizzeria_crud.repository.IngredientRepository;
@@ -49,12 +49,13 @@ public class PizzaService {
     }
     
     public void delete(Pizza pizza){
-        for(Ingredient ingredientToDelete : pizza.getIngredients()){
-            ingredientRepo.delete(ingredientToDelete);
-        }
+        // for(Ingredient ingredientToDelete : pizza.getIngredients()){
+        //     ingredientRepo.delete(ingredientToDelete);
+        //  }
         for(Offer offerToDelete : pizza.getOffers()){
             offerRepo.delete(offerToDelete);
         }
+        pizzaRepo.delete(pizza);
     }
 
 
